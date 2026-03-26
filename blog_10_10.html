@@ -1,0 +1,1237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus IT Solutions | Insights & Blog</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Syne:wght@400..800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --navy: #0b0e1a;
+            --purple: #7b5cfa;
+            --cyan: #00d4c8;
+            --white: #ffffff;
+            --slate-50: #f8fafc;
+            --slate-100: #f1f5f9;
+            --slate-200: #e2e8f0;
+            --slate-400: #94a3b8;
+            --slate-500: #64748b;
+            --slate-600: #475569;
+            --slate-700: #334155;
+            --slate-800: #1e293b;
+            --slate-900: #0f172a;
+            
+            --font-display: 'Syne', sans-serif;
+            --font-body: 'DM Sans', sans-serif;
+            
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+            --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+            --shadow-glow: 0 0 0 1.5px rgba(123, 92, 250, 0.5);
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--navy);
+            color: var(--slate-400);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .font-display {
+            font-family: var(--font-display);
+            color: var(--white);
+            line-height: 1.1;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 2rem;
+            border-radius: 9999px;
+            font-weight: 700;
+            font-size: 0.875rem;
+            letter-spacing: 0.025em;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            border: none;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--purple), var(--cyan));
+            color: white;
+            box-shadow: 0 10px 20px -5px rgba(123, 92, 250, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px -5px rgba(123, 92, 250, 0.5);
+        }
+
+        /* Animations */
+        @media (prefers-reduced-motion: no-preference) {
+            .fade-up {
+                opacity: 0;
+                transform: translateY(20px);
+                transition: opacity 0.8s cubic-bezier(0.2, 1, 0.3, 1), transform 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+            }
+
+            .fade-up.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            .stagger-item {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+        }
+
+        /* Skeleton Loader */
+        .skeleton {
+            background: linear-gradient(90deg, #1e293b 25%, #334155 50%, #1e293b 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite linear;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 160px 0 100px;
+            text-align: center;
+            position: relative;
+            background: radial-gradient(circle at top center, rgba(123, 92, 250, 0.15) 0%, transparent 70%);
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 800;
+            margin-bottom: 2rem;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+            letter-spacing: -0.05em;
+        }
+
+        .hero h1 .word {
+            display: inline-block;
+            overflow: hidden;
+            vertical-align: bottom;
+        }
+
+        .hero h1 .char {
+            display: inline-block;
+            transform: translateY(100%);
+            opacity: 0;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--slate-400);
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUpIn 0.8s forwards 1s;
+        }
+
+        @keyframes fadeUpIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Section 1: Featured Post */
+        .featured {
+            margin-bottom: 80px;
+        }
+
+        .featured-card {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 2.5rem;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .featured-card:hover {
+            box-shadow: var(--shadow-glow);
+            border-color: rgba(123, 92, 250, 0.3);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .featured-image-wrapper {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+        }
+
+        .featured-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+
+        .featured-card:hover .featured-image-wrapper img {
+            transform: scale(1.05);
+        }
+
+        .featured-content {
+            padding: 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .category-pill {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: rgba(123, 92, 250, 0.15);
+            color: var(--purple);
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 2rem;
+            width: fit-content;
+        }
+
+        .featured-meta {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            font-size: 0.875rem;
+            color: var(--slate-500);
+            margin-bottom: 1.5rem;
+        }
+
+        .meta-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.25rem 0.75rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0.5rem;
+            color: var(--slate-400);
+        }
+
+        .featured-title {
+            font-size: 3rem;
+            color: #ffffff; /* Requirement: Set title text color to #ffffff */
+            margin-bottom: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .featured-card:hover .featured-title {
+            color: var(--purple);
+        }
+
+        .featured-description {
+            font-size: 1.125rem;
+            color: var(--slate-400);
+            margin-bottom: 2.5rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .author-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 40px; /* Requirement: 40px circular avatar */
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(123, 92, 250, 0.3);
+        }
+
+        .author-name {
+            font-weight: 700;
+            color: var(--white);
+            font-size: 1rem;
+        }
+
+        /* Section 2: Filter Tabs + Search */
+        .controls {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .controls-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .filter-tabs {
+            display: flex;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 0.4rem;
+            border-radius: 9999px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .filter-tab {
+            padding: 0.6rem 1.25rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: var(--slate-400);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .filter-tab.active {
+            background: var(--purple);
+            color: white;
+            box-shadow: 0 4px 12px rgba(123, 92, 250, 0.3);
+        }
+
+        .filter-tab .count {
+            opacity: 0.6;
+            font-size: 0.75rem;
+            margin-left: 0.25rem;
+        }
+
+        .search-sort {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .search-box {
+            position: relative;
+        }
+
+        .search-input {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 0.75rem 1rem 0.75rem 2.8rem;
+            border-radius: 1rem;
+            width: 280px;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--purple);
+            background: rgba(255, 255, 255, 0.06);
+            box-shadow: 0 0 0 4px rgba(123, 92, 250, 0.1);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--slate-500);
+            pointer-events: none;
+        }
+
+        .sort-dropdown {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 0.75rem 1rem;
+            border-radius: 1rem;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 0.875rem;
+            appearance: none;
+            padding-right: 2.5rem;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+        }
+
+        /* Section 2: Blog Card Grid */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .blog-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 2rem;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            transform-origin: center;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-6px); /* Requirement: translate-y -6px */
+            box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.5), 0 10px 30px -5px rgba(123, 92, 250, 0.1);
+            border-color: rgba(123, 92, 250, 0.3);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .card-image-wrapper {
+            position: relative;
+            aspect-ratio: 16/9; /* Requirement: aspect-ratio: 16/9 */
+            overflow: hidden;
+        }
+
+        .card-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+
+        .blog-card:hover .card-image-wrapper img {
+            transform: scale(1.1);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1.5rem;
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 0.75rem;
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            box-shadow: 0 4px 10px rgba(217, 119, 6, 0.3);
+        }
+
+        .bookmark-icon {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(8px);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .bookmark-icon svg {
+            width: 20px;
+            height: 20px;
+            stroke: white;
+            fill: transparent;
+            transition: all 0.3s ease;
+        }
+
+        .bookmark-icon.active {
+            background: var(--purple);
+            border-color: var(--purple);
+        }
+
+        .bookmark-icon.active svg {
+            fill: white;
+        }
+
+        .card-content {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card-meta {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.8rem;
+            color: var(--slate-500);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 700;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+            transition: color 0.3s ease;
+        }
+
+        .blog-card:hover .card-title {
+            color: var(--purple);
+        }
+
+        .card-description {
+            font-size: 0.9375rem;
+            color: var(--slate-500);
+            margin-bottom: 2rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .card-footer {
+            margin-top: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .card-author {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .card-author-avatar {
+            width: 32px; /* Requirement: 32px circle */
+            height: 32px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1.5px solid rgba(123, 92, 250, 0.3);
+        }
+
+        .card-author-name {
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        /* Empty State */
+        .empty-state {
+            grid-column: 1 / -1;
+            padding: 5rem;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.02);
+            border: 2px dashed rgba(255, 255, 255, 0.1);
+            border-radius: 2rem;
+            display: none;
+        }
+
+        .empty-state.visible {
+            display: block;
+        }
+
+        .empty-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        /* Section 5: CTA Section */
+        .cta {
+            background: radial-gradient(circle at center, rgba(123, 92, 250, 0.1) 0%, transparent 70%);
+        }
+
+        .cta-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 5rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 3.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-content::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 0%, rgba(123, 92, 250, 0.1), transparent 50%);
+            pointer-events: none;
+        }
+
+        .cta h2 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta p {
+            font-size: 1.25rem;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .subscribe-form {
+            max-width: 500px;
+            margin: 0 auto 3rem;
+            position: relative;
+        }
+
+        .form-group {
+            position: relative;
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .subscribe-input {
+            flex-grow: 1;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 1.25rem 1.5rem;
+            border-radius: 1.5rem;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .subscribe-input:focus {
+            outline: none;
+            border-color: var(--purple);
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .subscribe-btn {
+            position: relative;
+            min-width: 140px;
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .micro-copy {
+            display: block;
+            font-size: 0.875rem;
+            color: var(--slate-500);
+            margin-top: 1rem;
+        }
+
+        /* Trust Stats */
+        .trust-stats {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--white);
+            font-family: var(--font-display);
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--slate-500);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 700;
+        }
+
+        /* Form Success Message */
+        .success-message {
+            display: none;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.5s ease;
+        }
+
+        .success-message.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Spinner */
+        .spinner {
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 0.8s linear infinite;
+            display: none;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .loading .spinner {
+            display: block;
+        }
+
+        .loading .btn-text {
+            display: none;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 1024px) {
+            .hero h1 { font-size: 3.5rem; }
+            .featured-card { grid-template-columns: 1fr; }
+            .featured-image-wrapper { height: 350px; }
+            .featured-content { padding: 3rem; }
+            .featured-title { font-size: 2.5rem; }
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 0 1.5rem; }
+            .hero { padding: 120px 0 60px; }
+            .hero h1 { font-size: 2.75rem; }
+            .controls-top { flex-direction: column; align-items: stretch; }
+            .search-input { width: 100%; }
+            .grid-container { grid-template-columns: 1fr; }
+            .cta-content { padding: 3rem 1.5rem; border-radius: 2.5rem; }
+            .cta h2 { font-size: 2.25rem; }
+            .trust-stats { gap: 2rem; }
+            .stat-value { font-size: 1.25rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <div class="container">
+            <h1 id="hero-title"></h1>
+            <p>Elevating businesses with premium IT solutions, cutting-edge software engineering, and strategic digital insights.</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Section 1: Featured Post -->
+        <section id="featured-section" class="featured fade-up">
+            <!-- Dynamically populated -->
+        </section>
+
+        <!-- Section 4: Filter Tabs + Search -->
+        <div class="controls fade-up">
+            <div class="controls-top">
+                <div class="filter-tabs" id="filter-tabs">
+                    <div class="filter-tab active" data-category="All">All <span class="count" id="count-all"></span></div>
+                    <div class="filter-tab" data-category="Software">Software <span class="count" id="count-software"></span></div>
+                    <div class="filter-tab" data-category="Web">Web <span class="count" id="count-web"></span></div>
+                    <div class="filter-tab" data-category="Mobile">Mobile <span class="count" id="count-mobile"></span></div>
+                    <div class="filter-tab" data-category="AI">AI <span class="count" id="count-ai"></span></div>
+                    <div class="filter-tab" data-category="Integration">Integration <span class="count" id="count-integration"></span></div>
+                </div>
+
+                <div class="search-sort">
+                    <div class="search-box">
+                        <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                        <input type="text" id="search-input" class="search-input" placeholder="Search insights...">
+                    </div>
+                    <select id="sort-dropdown" class="sort-dropdown">
+                        <option value="Newest">Newest</option>
+                        <option value="Popular">Most Popular</option>
+                        <option value="Trending">Trending</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: Blog Card Grid -->
+        <section id="blog-grid" class="grid-container">
+            <!-- Card Skeletons will be here initially, then replaced by JS -->
+            <!-- Requirement: Add shimmer skeleton loaders -->
+            <div class="blog-card skeleton-card">
+                <div class="card-image-wrapper skeleton"></div>
+                <div class="card-content">
+                    <div class="card-meta skeleton" style="height: 14px; width: 40%; margin-bottom: 1rem;"></div>
+                    <div class="card-title skeleton" style="height: 28px; width: 90%; margin-bottom: 1rem;"></div>
+                    <div class="card-description skeleton" style="height: 48px; width: 100%; margin-bottom: 2rem;"></div>
+                    <div class="card-footer">
+                        <div class="card-author">
+                            <div class="card-author-avatar skeleton"></div>
+                            <div class="card-author-name skeleton" style="height: 14px; width: 80px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="blog-card skeleton-card">
+                <div class="card-image-wrapper skeleton"></div>
+                <div class="card-content">
+                    <div class="card-meta skeleton" style="height: 14px; width: 40%; margin-bottom: 1rem;"></div>
+                    <div class="card-title skeleton" style="height: 28px; width: 90%; margin-bottom: 1rem;"></div>
+                    <div class="card-description skeleton" style="height: 48px; width: 100%; margin-bottom: 2rem;"></div>
+                    <div class="card-footer">
+                        <div class="card-author">
+                            <div class="card-author-avatar skeleton"></div>
+                            <div class="card-author-name skeleton" style="height: 14px; width: 80px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="blog-card skeleton-card">
+                <div class="card-image-wrapper skeleton"></div>
+                <div class="card-content">
+                    <div class="card-meta skeleton" style="height: 14px; width: 40%; margin-bottom: 1rem;"></div>
+                    <div class="card-title skeleton" style="height: 28px; width: 90%; margin-bottom: 1rem;"></div>
+                    <div class="card-description skeleton" style="height: 48px; width: 100%; margin-bottom: 2rem;"></div>
+                    <div class="card-footer">
+                        <div class="card-author">
+                            <div class="card-author-avatar skeleton"></div>
+                            <div class="card-author-name skeleton" style="height: 14px; width: 80px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Empty State UI -->
+        <div id="empty-state" class="empty-state">
+            <span class="empty-icon">🔍</span>
+            <h3>No articles match your criteria</h3>
+            <p>Try adjusting your search or filter to find what you're looking for.</p>
+        </div>
+    </main>
+
+    <!-- Section 5: CTA Section -->
+    <section class="cta section-padding">
+        <div class="container">
+            <div class="cta-content fade-up">
+                <div id="cta-form-container">
+                    <h2>Stay Ahead of the <span style="color: var(--purple)">Tech Curve</span></h2>
+                    <p>Join 5,000+ developers and tech leaders receiving our weekly insights on modern engineering.</p>
+                    
+                    <form id="subscribe-form" class="subscribe-form">
+                        <div class="form-group">
+                            <input type="email" class="subscribe-input" placeholder="your@email.com" required>
+                            <button type="submit" class="btn btn-primary subscribe-btn">
+                                <span class="btn-text">Subscribe</span>
+                                <div class="spinner"></div>
+                            </button>
+                        </div>
+                        <span class="micro-copy">No spam. Unsubscribe anytime.</span>
+                    </form>
+                </div>
+
+                <div id="cta-success" class="success-message">
+                    <div style="font-size: 4rem; margin-bottom: 1.5rem;">✓</div>
+                    <h2>You're in!</h2>
+                    <p>Check your inbox to confirm your subscription. Welcome to Nexus.</p>
+                </div>
+
+                <div class="trust-stats">
+                    <div class="stat-item">
+                        <span class="stat-value">500+</span>
+                        <span class="stat-label">Businesses Helped</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">50+</span>
+                        <span class="stat-label">Articles</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">4.9★</span>
+                        <span class="stat-label">Rating</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // --- DATA ---
+        const blogs = [
+            {
+                id: "s1",
+                title: "The Strategic Advantage of Custom Software Engineering",
+                category: "Software",
+                date: "March 20, 2024",
+                author: "Sarah Chen",
+                image: "https://images.unsplash.com/photo-1510915228340-29c85a43dcfe?w=1200",
+                description: "Learn how custom-built enterprise software can streamline your operations and provide a competitive edge.",
+                readTime: "7 min",
+                isFeatured: true,
+                views: 12050
+            },
+            {
+                id: "s2",
+                title: "How Scalable Software Improves Business Growth",
+                category: "Software",
+                date: "March 15, 2024",
+                author: "Marcus Thorne",
+                image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200",
+                description: "Discover why scalability is the backbone of successful digital transformation.",
+                readTime: "6 min",
+                views: 8400
+            },
+            {
+                id: "w1",
+                title: "Why Every Business Needs a Modern Website",
+                category: "Web",
+                date: "March 18, 2024",
+                author: "Elena Rodriguez",
+                image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200",
+                description: "Your website is your digital storefront. Make sure it's making the right impression.",
+                readTime: "4 min",
+                views: 15200,
+                isPopular: true
+            },
+            {
+                id: "m1",
+                title: "Why Mobile Apps Increase Customer Engagement",
+                category: "Mobile",
+                date: "March 15, 2024",
+                author: "David Kim",
+                image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=1200",
+                description: "Mobile apps offer a direct and personalized channel to reach your audience.",
+                readTime: "5 min",
+                views: 9100
+            },
+            {
+                id: "a1",
+                title: "How AI is Transforming Modern Businesses",
+                category: "AI",
+                date: "March 12, 2024",
+                author: "Alex Rivera",
+                image: "https://images.unsplash.com/photo-1555255707-c07966488bc7?w=1200",
+                description: "Artificial Intelligence is no longer sci-fi; it's a practical tool for efficiency.",
+                readTime: "6 min",
+                views: 20500
+            },
+            {
+                id: "sy1",
+                title: "System Integration: Foundation of Scalable Enterprise",
+                category: "Integration",
+                date: "March 5, 2024",
+                author: "Julius Novak",
+                image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200",
+                description: "Connected systems are the foundation of a scalable and efficient enterprise.",
+                readTime: "5 min",
+                views: 4200
+            }
+        ];
+
+        // --- CORE LOGIC ---
+        document.addEventListener('DOMContentLoaded', () => {
+            initHeroAnimation();
+            renderFeatured();
+            updateCounts();
+            renderGrid(blogs.filter(b => !b.isFeatured));
+            setupFilters();
+            setupSearch();
+            setupCTA();
+            setupIntersectionObserver();
+        });
+
+        // Hero Word Reveal Animation
+        function initHeroAnimation() {
+            const title = "Future-Proof Your Business with Nexus IT Solutions";
+            const container = document.getElementById('hero-title');
+            
+            title.split(' ').forEach((word, wordIdx) => {
+                const wordSpan = document.createElement('span');
+                wordSpan.className = 'word';
+                
+                word.split('').forEach((char, charIdx) => {
+                    const charSpan = document.createElement('span');
+                    charSpan.className = 'char';
+                    charSpan.textContent = char;
+                    charSpan.style.transition = `all 0.6s cubic-bezier(0.2, 1, 0.3, 1) ${wordIdx * 0.1 + charIdx * 0.03}s`;
+                    wordSpan.appendChild(charSpan);
+                });
+                
+                container.appendChild(wordSpan);
+                container.appendChild(document.createTextNode(' '));
+            });
+
+            // Trigger animation
+            setTimeout(() => {
+                document.querySelectorAll('.char').forEach(char => {
+                    char.style.transform = 'translateY(0)';
+                    char.style.opacity = '1';
+                });
+            }, 100);
+        }
+
+        // Render Featured Post
+        function renderFeatured() {
+            const featured = blogs.find(b => b.isFeatured);
+            const container = document.getElementById('featured-section');
+            
+            container.innerHTML = `
+                <div class="featured-card">
+                    <div class="featured-image-wrapper">
+                        <img src="${featured.image}" alt="${featured.title}" loading="lazy" width="800" height="500">
+                    </div>
+                    <div class="featured-content">
+                        <span class="category-pill">${featured.category}</span>
+                        <div class="featured-meta">
+                            <span>${featured.date}</span>
+                            <span class="meta-badge">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                ${featured.readTime} read
+                            </span>
+                        </div>
+                        <h2 class="featured-title">${featured.title}</h2>
+                        <p class="featured-description">${featured.description}</p>
+                        <div class="author-info">
+                            <img src="https://i.pravatar.cc/150?u=${featured.author}" class="author-avatar" alt="${featured.author}">
+                            <div class="author-name">${featured.author}</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Render Grid
+        function renderGrid(posts) {
+            const grid = document.getElementById('blog-grid');
+            const emptyState = document.getElementById('empty-state');
+            
+            if (posts.length === 0) {
+                grid.style.display = 'none';
+                emptyState.classList.add('visible');
+                return;
+            }
+
+            grid.style.display = 'grid';
+            emptyState.classList.remove('visible');
+
+            // Requirement: Stagger each card by 80ms
+            const html = posts.map((post, index) => `
+                <article class="blog-card stagger-item" data-category="${post.category}" style="transition-delay: ${index * 0.08}s">
+                    <div class="card-image-wrapper">
+                        <img src="${post.image}" alt="${post.title}" loading="lazy" width="400" height="225">
+                        ${post.isPopular ? `
+                            <div class="popular-badge">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                Popular
+                            </div>
+                        ` : ''}
+                        <div class="bookmark-icon" onclick="toggleBookmark(this, event)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-meta">
+                            <span>${post.date}</span>
+                            <span>•</span>
+                            <span>${post.readTime}</span>
+                        </div>
+                        <h3 class="card-title">${post.title}</h3>
+                        <p class="card-description">${post.description}</p>
+                        <div class="card-footer">
+                            <div class="card-author">
+                                <img src="https://i.pravatar.cc/150?u=${post.author}" class="card-author-avatar" alt="${post.author}">
+                                <span class="card-author-name">${post.author}</span>
+                            </div>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+                        </div>
+                    </div>
+                </article>
+            `).join('');
+
+            // Hide skeleton after a small delay to show shimmer
+            setTimeout(() => {
+                grid.innerHTML = html;
+                setTimeout(() => {
+                    document.querySelectorAll('.stagger-item').forEach(item => {
+                        item.classList.add('visible');
+                        item.style.opacity = '1';
+                        item.style.transform = 'translateY(0)';
+                    });
+                }, 50);
+            }, 800);
+        }
+
+        // Filtering logic
+        function setupFilters() {
+            const tabs = document.querySelectorAll('.filter-tab');
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    filterAndSearch();
+                });
+            });
+        }
+
+        function setupSearch() {
+            const input = document.getElementById('search-input');
+            input.addEventListener('input', () => {
+                filterAndSearch();
+            });
+
+            const sort = document.getElementById('sort-dropdown');
+            sort.addEventListener('change', () => {
+                filterAndSearch();
+            });
+        }
+
+        function filterAndSearch() {
+            const category = document.querySelector('.filter-tab.active').dataset.category;
+            const query = document.getElementById('search-input').value.toLowerCase();
+            const sortBy = document.getElementById('sort-dropdown').value;
+            
+            let filtered = blogs.filter(b => !b.isFeatured);
+            
+            if (category !== 'All') {
+                filtered = filtered.filter(b => b.category === category);
+            }
+            
+            if (query) {
+                filtered = filtered.filter(b => 
+                    b.title.toLowerCase().includes(query) || 
+                    b.category.toLowerCase().includes(query)
+                );
+            }
+
+            // Sorting
+            if (sortBy === 'Popular') {
+                filtered.sort((a, b) => b.views - a.views);
+            } else if (sortBy === 'Trending') {
+                filtered.sort((a, b) => (b.views / 2) - (a.views / 2)); // Mock logic
+            } else {
+                // Newest (Default sort by date - mock reverse index)
+                filtered.sort((a, b) => 1); 
+            }
+
+            // Animation for filtered cards: opacity + scale (0.97 to 1)
+            const grid = document.getElementById('blog-grid');
+            grid.style.opacity = '0';
+            grid.style.transform = 'scale(0.97)';
+            grid.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
+            
+            setTimeout(() => {
+                renderGrid(filtered);
+                grid.style.opacity = '1';
+                grid.style.transform = 'scale(1)';
+            }, 200);
+        }
+
+        function updateCounts() {
+            const allPosts = blogs.filter(b => !b.isFeatured);
+            document.getElementById('count-all').textContent = `(${allPosts.length})`;
+            ['Software', 'Web', 'Mobile', 'AI', 'Integration'].forEach(cat => {
+                const count = allPosts.filter(b => b.category === cat).length;
+                document.getElementById(`count-${cat.toLowerCase()}`).textContent = `(${count})`;
+            });
+        }
+
+        function toggleBookmark(el, e) {
+            e.stopPropagation();
+            el.classList.toggle('active');
+        }
+
+        // CTA Logic
+        function setupCTA() {
+            const form = document.getElementById('subscribe-form');
+            const submitBtn = form.querySelector('.subscribe-btn');
+            const container = document.getElementById('cta-form-container');
+            const success = document.getElementById('cta-success');
+
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                submitBtn.classList.add('loading');
+                submitBtn.disabled = true;
+
+                // Requirement: After 1.5s: replace form with success message
+                setTimeout(() => {
+                    container.style.display = 'none';
+                    success.classList.add('active');
+                }, 1500);
+            });
+        }
+
+        // Intersection Observer
+        function setupIntersectionObserver() {
+            const options = {
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, options);
+
+            document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+        }
+
+    </script>
+</body>
+</html>

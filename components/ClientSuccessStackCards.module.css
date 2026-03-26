@@ -1,0 +1,130 @@
+.section {
+  width: 100%;
+  background: transparent;
+  padding: 100px 0 120px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  text-align: center;
+  color: #fff;
+}
+
+.stackWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  min-height: 260px;
+  margin: 0 auto;
+  margin-top: 2.5rem;
+  perspective: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.card {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 100%;
+  min-height: 200px;
+  background: rgba(20,20,30,0.6);
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  color: #f8fafc;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 30px;
+  transition:
+    transform 0.7s cubic-bezier(0.23,1,0.32,1),
+    box-shadow 0.7s cubic-bezier(0.23,1,0.32,1),
+    opacity 0.7s cubic-bezier(0.23,1,0.32,1),
+    z-index 0.7s cubic-bezier(0.23,1,0.32,1);
+  z-index: 1;
+  opacity: 1;
+  border: 2px solid transparent;
+}
+
+.cardGlow {
+  box-shadow: 0 0 0 4px #6366f1, 0 20px 60px rgba(99,102,241,0.18), 0 1.5px 8px 0 rgba(6,182,212,0.12);
+  border-image: linear-gradient(90deg, #6366f1, #a78bfa, #06b6d4) 1;
+  animation: neonGlow 2.2s linear infinite alternate;
+}
+
+@keyframes neonGlow {
+  0% {
+    border-image: linear-gradient(90deg, #6366f1, #a78bfa, #06b6d4) 1;
+  }
+  100% {
+    border-image: linear-gradient(270deg, #06b6d4, #a78bfa, #6366f1) 1;
+  }
+}
+
+.cardTitle {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 0.7rem;
+  color: #fff;
+}
+
+.cardReview {
+  font-size: 1.05rem;
+  color: #f1f5f9;
+  opacity: 0.85;
+  margin-bottom: 1.2rem;
+  line-height: 1.6;
+}
+
+.cardClient {
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: #38bdf8;
+  margin-bottom: 0.2rem;
+}
+
+.cardRole {
+  font-size: 0.98rem;
+  color: #cbd5e1;
+}
+
+@media (max-width: 600px) {
+  .stackWrapper {
+    max-width: 100vw;
+    min-height: 220px;
+    overflow-x: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 18px;
+    position: static;
+    perspective: none;
+  }
+  .card {
+    position: static;
+    min-width: 85vw;
+    transform: none !important;
+    opacity: 1 !important;
+    z-index: 1 !important;
+    margin: 0;
+  }
+}

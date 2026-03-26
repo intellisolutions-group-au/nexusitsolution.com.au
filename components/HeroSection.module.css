@@ -1,0 +1,349 @@
+.heroContainer {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: #060c21;
+  isolation: isolate;
+  padding-top: 100px; /* Offset for Mobile Navbar */
+}
+
+@media (min-width: 1024px) {
+  .heroContainer {
+    padding-top: 120px; /* Offset for Desktop Navbar */
+  }
+}
+
+/* Hard-seal the bottom edge for negative-margin overlaps from sibling sections */
+.heroContainer::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: linear-gradient(to bottom, transparent, #060c21);
+  pointer-events: none;
+  z-index: 40;
+}
+
+.glowContainer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.glowBlue {
+  position: absolute;
+  top: 20%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.15) 0%, transparent 70%);
+  filter: blur(80px);
+}
+
+.glowIndigo {
+  position: absolute;
+  bottom: 10%;
+  right: 15%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(79, 70, 229, 0.12) 0%, transparent 70%);
+  filter: blur(80px);
+}
+
+.glowViolet {
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 70%);
+  filter: blur(80px);
+}
+
+.gridOverlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: linear-gradient(to bottom, black, transparent);
+  z-index: 2;
+}
+
+.contentWrapper {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1.25rem; /* 20px for mobile */
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .contentWrapper {
+    padding: 0 4rem;
+    gap: 4rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .contentWrapper {
+    grid-template-columns: 1.1fr 1fr;
+  }
+}
+
+.leftColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.rightColumn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 350px; /* Reduced for better balance */
+  perspective: 1500px;
+}
+
+@media (min-width: 1024px) {
+  .rightColumn {
+    height: 550px; /* Reduced for better balance */
+  }
+}
+
+.headline {
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
+  line-height: 1.1;
+  font-weight: 800;
+  color: white;
+  margin-bottom: 2rem;
+  letter-spacing: -0.02em;
+}
+
+@media (min-width: 1024px) {
+  .headline {
+    font-size: 5.5rem;
+  }
+}
+
+.description {
+  font-size: 1.125rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 3.5rem;
+  line-height: 1.7;
+  max-width: 540px;
+}
+
+.ctaGroup {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.primaryBtn {
+  padding: 1rem 2.25rem;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  font-weight: 600;
+  border-radius: 0.75rem;
+  transition: all 0.3s ease;
+}
+
+.primaryBtn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: white;
+  transform: translateY(-2px);
+}
+
+.secondaryBtn {
+  padding: 1rem 2.25rem;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  font-weight: 600;
+  border-radius: 0.75rem;
+  transition: all 0.3s ease;
+}
+
+.secondaryBtn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: white;
+  transform: translateY(-2px);
+}
+
+.visualContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+}
+
+.orbitalRing {
+  position: absolute;
+  border: 1px dashed rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  pointer-events: none;
+  display: none; /* Hide complex rings on mobile */
+}
+
+@media (min-width: 768px) {
+  .orbitalRing {
+    display: block;
+  }
+}
+
+.outerRing {
+  width: 800px;
+  height: 800px;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.ringTracer {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #3b82f6;
+  border-radius: 50%;
+  box-shadow: 0 0 15px #3b82f6;
+}
+
+.ringTracerPurple {
+  background: #8b5cf6;
+  box-shadow: 0 0 15px #8b5cf6;
+}
+
+.moduleCard {
+  position: absolute;
+  width: 160px; /* Smaller for mobile */
+  padding: 1rem;
+  background: rgba(6, 12, 33, 0.6);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1.25rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  z-index: 30;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  display: none; /* Hide on mobile to prevent overflow */
+}
+
+@media (min-width: 768px) {
+  .moduleCard {
+    display: block;
+    width: 180px; /* Reduced from 240px */
+    padding: 1rem;
+  }
+}
+
+.moduleCard:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(6, 12, 33, 0.8);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+}
+
+.vrTint {
+  border-color: rgba(99, 102, 241, 0.2);
+}
+
+.vrTint:hover {
+  border-color: rgba(99, 102, 241, 0.4);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.cardTitle {
+  font-size: 0.875rem; /* Reduced from 1rem */
+  font-weight: 700;
+  color: white;
+}
+
+.cardIcon {
+  width: 32px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.progressBarContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.progressBar {
+  height: 4px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progressPrimary {
+  height: 100%;
+  background: #3b82f6;
+}
+
+.progressSecondary {
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.progressIndigo {
+  background: #6366f1;
+}
+
+.progressSoftPurple {
+  background: rgba(167, 139, 250, 0.2);
+}
+
+.trustedBy {
+  position: absolute;
+  bottom: 2rem;
+  left: 0;
+  width: 100%;
+  z-index: 20;
+  display: flex;
+  justify-content: center;
+  opacity: 0.4;
+}
+
+@media (max-width: 1200px) {
+  .visualContainer {
+    transform: scale(0.85); /* Scale down complex visual on smaller desktops */
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

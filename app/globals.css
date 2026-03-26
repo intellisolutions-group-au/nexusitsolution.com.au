@@ -1,26 +1,282 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-primary: #7c3aed;
+  --color-secondary: #0891b2;
+  --color-accent: #22d3ee;
+  --color-dark: #080c1a;
+  --color-muted: #6b7799;
+  --color-bg-subtle: #f8f9fc;
+  --color-slate-border: rgba(0, 0, 0, 0.07);
+
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "DM Mono", monospace;
+  --font-display: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer base {
+  html,
+  body {
+    @apply bg-bg-subtle text-muted min-h-screen selection:bg-primary/20 selection:text-primary overflow-x-hidden;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    cursor: none; /* Reference uses custom cursor */
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0.025;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 200px;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  .container-custom {
+    @apply mx-auto px-4 md:px-6 lg:px-8 max-w-7xl;
+  }
+
+  .glass-premium {
+    @apply bg-white/70 backdrop-blur-3xl border border-black/5 shadow-2xl;
+  }
+
+  .glass-card-premium {
+    @apply bg-white/50 backdrop-blur-xl border border-black/5 rounded-3xl shadow-sm transition-all duration-500 hover:bg-white hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2;
+  }
+
+  .text-premium-gradient {
+    @apply bg-linear-to-r from-primary via-secondary to-accent bg-clip-text text-transparent;
+  }
+
+  /* Pre-animated button backgrounds */
+  .btn-premium-bg {
+    @apply absolute inset-0 bg-linear-to-r from-primary to-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-500;
+  }
+
+  .animate-float {
+    animation: floatBtn 3s ease-in-out infinite;
+  }
+}
+
+@keyframes marquee-right {
+  0% {
+    transform: translateX(-50%);
+  }
+
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.animate-marquee-right {
+  animation: marquee-right 30s linear infinite !important;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+@keyframes pulse-btn {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 0 12px rgba(37, 99, 235, 0);
+  }
+}
+
+.animate-pulse-btn {
+  animation: pulse-btn 2s ease-in-out infinite;
+}
+
+@keyframes icon-spin-float {
+  0% {
+    transform: rotate(0deg) scale(1) translateY(0);
+  }
+
+  100% {
+    transform: rotate(360deg) scale(1.1) translateY(-4px);
+  }
+}
+
+@keyframes pulse-glow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4);
+  }
+
+  70% {
+    box-shadow: 0 0 0 10px rgba(37, 99, 235, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 99, 235, 0);
+  }
+}
+
+/* 3D Icon Animations */
+.icon-3d {
+  transform-style: preserve-3d;
+  perspective: 180px;
+  will-change: transform;
+}
+
+@keyframes float-a {
+
+  0%,
+  100% {
+    transform: translateY(0) translateZ(0) rotateX(0);
+  }
+
+  50% {
+    transform: translateY(-10px) translateZ(10px) rotateX(5deg);
+  }
+}
+
+@keyframes float-b {
+
+  0%,
+  100% {
+    transform: translateY(0) translateZ(0) rotateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px) translateZ(15px) rotateY(-5deg);
+  }
+}
+
+@keyframes float-c {
+
+  0%,
+  100% {
+    transform: translateY(0) translateZ(0) rotate(0);
+  }
+
+  50% {
+    transform: translateY(-12px) translateZ(5px) rotate(3deg);
+  }
+}
+
+.fl-a {
+  animation: float-a 4s ease-in-out infinite;
+}
+
+.fl-b {
+  animation: float-b 5s ease-in-out infinite;
+  animation-delay: 0.3s;
+}
+
+.fl-c {
+  animation: float-c 4.5s ease-in-out infinite;
+  animation-delay: 0.6s;
+}
+
+.icon-3d:hover {
+  animation-play-state: paused;
+}
+
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal-on-scroll.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.group:hover .animate-icon-premium {
+  animation: icon-spin-float 0.5s ease-out forwards;
+}
+
+.group:hover .animate-glow-premium {
+  animation: pulse-glow 1.5s infinite;
+}
+
+/* Existing Hover Animations */
+@keyframes bounce-custom {
+
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+
+  40% {
+    transform: translateY(-15px);
+  }
+
+  60% {
+    transform: translateY(-7px);
+  }
+}
+
+@keyframes spin-custom {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes tada-custom {
+  0% {
+    transform: scale(1);
+  }
+
+  10%,
+  20% {
+    transform: scale(0.9) rotate(-3deg);
+  }
+
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: scale(1.1) rotate(3deg);
+  }
+
+  40%,
+  60%,
+  80% {
+    transform: scale(1.1) rotate(-3deg);
+  }
+
+  100% {
+    transform: scale(1) rotate(0);
+  }
+}
+
+.group:hover .animate-bounce-hover {
+  animation: bounce-custom 1s ease-in-out;
+}
+
+.group:hover .animate-spin-hover {
+  animation: spin-custom 1s linear;
+}
+
+.group:hover .animate-tada-hover {
+  animation: tada-custom 1s ease-in-out;
+}
+
+.group:hover .animate-rubberband-hover {
+  animation: rubberband-custom 1s ease-in-out;
 }
