@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import NextImage from "next/image";
-import { Facebook, Twitter, Linkedin, Instagram, ArrowRight, Globe, MapPin, Mail, Phone } from "lucide-react";
+import { ArrowRight, Globe, MapPin, Mail, Phone } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function Footer() {
@@ -175,36 +175,13 @@ export default function Footer() {
               </li>
             </ul>
 
-            {/* Social Icons Overlay */}
-            <div className="mt-12 flex items-center justify-center md:justify-start gap-4">
-              {[
-                { icon: Facebook, href: "https://facebook.com/people/Nexus-IT-Solution/61556604231922/" },
-                { icon: Twitter, href: "https://twitter.com/nexusitsolution" },
-                { icon: Instagram, href: "https://instagram.com/nexusitsolution" },
-                { icon: Linkedin, href: "https://linkedin.com/company/nexus-it-solution" }
-              ].map((social, idx) => {
-                const Icon = social.icon;
-                return (
-                  <Link 
-                    key={idx} 
-                    href={social.href} 
-                    className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/30 hover:bg-primary hover:text-white hover:border-primary hover:scale-110 hover:shadow-[0_0_15px_rgba(147,51,234,0.3)] transition-all duration-300"
-                  >
-                    <Icon size={16} />
-                  </Link>
-                );
-              })}
-            </div>
           </div>
 
         </div>
 
-        {/* Footer Bottom */}
         <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 text-[11px] font-mono tracking-widest text-white/30 uppercase">
-          <div className="flex gap-12">
-            <span>© 2024 NEXUS IT SOLUTION. ALL RIGHTS RESERVED.</span>
-            <span>LICENSED & REGULATED</span>
-          </div>
+          <span>© 2024 NEXUS IT SOLUTION. ALL RIGHTS RESERVED.</span>
+          <span>LICENSED & REGULATED</span>
         </div>
       </div>
     </footer>

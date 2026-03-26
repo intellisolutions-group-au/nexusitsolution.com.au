@@ -7,15 +7,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
-  ArrowLeft, 
-  User, 
-  Clock, 
-  Share2, 
-  ChevronRight, 
-  Twitter, 
-  Linkedin, 
-  Facebook, 
-  Link as LinkIcon,
+  ArrowLeft,
+  User,
+  Clock,
+  ChevronRight,
   Tag,
   Check,
   Layers,
@@ -121,26 +116,7 @@ export default function BlogDetailPage() {
     { q: "What kind of support do you provide post-launch?", a: "We offer 24/7 dedicated support and maintenance packages tailored to your needs." }
   ];
 
-  const handleShare = (platform: string) => {
-    const url = typeof window !== 'undefined' ? window.location.href : '';
-    const text = post.title;
-    
-    const shares: Record<string, string> = {
-      twitter: `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`,
-      linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`,
-      facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`
-    };
 
-    if (shares[platform]) {
-      window.open(shares[platform], '_blank', 'width=600,height=400');
-    }
-  };
-
-  const handleCopyLink = () => {
-    const url = typeof window !== 'undefined' ? window.location.href : '';
-    navigator.clipboard.writeText(url);
-    alert("Link copied to clipboard!");
-  };
 
   return (
     <main className="min-h-screen bg-bg-subtle relative overflow-x-hidden">
@@ -468,35 +444,7 @@ export default function BlogDetailPage() {
                   </div>
                 </div>
 
-                {/* Share Dropdown component */}
-                <div className="p-8 rounded-[2.5rem] bg-white border border-black/5 shadow-sm">
-                   <h4 className="font-sans font-bold text-lg mb-6 text-dark flex items-center gap-2">
-                     <Share2 size={20} className="text-primary" />
-                     Share Insight
-                   </h4>
-                    <div className="flex gap-3">
-                      {[
-                        { Icon: Twitter, name: 'twitter' },
-                        { Icon: Linkedin, name: 'linkedin' },
-                        { Icon: Facebook, name: 'facebook' }
-                      ].map(({ Icon, name }) => (
-                        <button 
-                          key={name}
-                          onClick={() => handleShare(name)}
-                          className="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center text-slate-400 hover:bg-primary hover:text-white transition-all shadow-sm"
-                        >
-                          <Icon size={20} />
-                        </button>
-                      ))}
-                      <button 
-                        onClick={handleCopyLink}
-                        className="grow h-12 rounded-2xl bg-slate-50 flex items-center justify-center text-slate-400 hover:bg-primary hover:text-white transition-all shadow-sm gap-2 px-4"
-                      >
-                        <LinkIcon size={18} />
-                        <span className="text-xs font-bold uppercase tracking-widest">Copy</span>
-                      </button>
-                    </div>
-                </div>
+
 
                 {/* Categories */}
                 <div className="p-8 rounded-[2.5rem] bg-white border border-black/5 shadow-sm">

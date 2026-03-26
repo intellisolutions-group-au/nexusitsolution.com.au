@@ -11,8 +11,8 @@ const headline = "Designed to Elevate Digital Innovation.";
 export default function CreativeHero() {
   const containerRef = useRef(null);
   const { scrollY } = useScroll();
-  const opacity = useTransform(scrollY, [0, 300], [1, 0]);
-  const yTranslate = useTransform(scrollY, [0, 500], [0, 150]);
+  // const opacity = useTransform(scrollY, [0, 300], [1, 0]);
+  // const yTranslate = useTransform(scrollY, [0, 500], [0, 150]);
 
   return (
     <section
@@ -36,7 +36,7 @@ export default function CreativeHero() {
 
       <div className="container-custom relative z-10 w-full">
         <motion.div
-          style={{ opacity, y: yTranslate }}
+          // style={{ opacity, y: yTranslate }}
           className="max-w-5xl mx-auto"
         >
           {/* Eyebrow / Location Badge */}
