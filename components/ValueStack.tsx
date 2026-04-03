@@ -2,13 +2,14 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { TrendingUp, User, Lightbulb, BookOpen } from "lucide-react";
 
 /* ── Card definitions ───────────────────────────── */
 const cards = [
   {
     title: "Progress",
     desc: "We fuel our growth through your success, fostering long-term business relationships.",
-    icon: "📈",
+    icon: <TrendingUp size={48} strokeWidth={1.5} />,
     stacked: { x: 0, y: 0, rot: 0, z: 10 },
     spread: { x: -105, y: -105, rot: -3 },
     hover: { x: -105, y: -118, rot: -3 },
@@ -16,7 +17,7 @@ const cards = [
   {
     title: "User Experience",
     desc: "Solutions designed with user-centric approaches ensuring satisfaction from startups to enterprises.",
-    icon: "👤",
+    icon: <User size={48} strokeWidth={1.5} />,
     stacked: { x: 5, y: 5, rot: 2.5, z: 9 },
     spread: { x: 105, y: -105, rot: 3 },
     hover: { x: 105, y: -118, rot: 3 },
@@ -24,7 +25,7 @@ const cards = [
   {
     title: "Innovation",
     desc: "Staying ahead with futuristic technologies to keep your business competitive.",
-    icon: "💡",
+    icon: <Lightbulb size={48} strokeWidth={1.5} />,
     stacked: { x: -4, y: 8, rot: -3, z: 8 },
     spread: { x: -105, y: 105, rot: 3 },
     hover: { x: -105, y: 92, rot: 3 },
@@ -32,7 +33,7 @@ const cards = [
   {
     title: "Integrity",
     desc: "Upholding strong ethics in every client relationship.",
-    icon: "📖",
+    icon: <BookOpen size={48} strokeWidth={1.5} />,
     stacked: { x: 8, y: 11, rot: 5, z: 7 },
     spread: { x: 105, y: 105, rot: -3 },
     hover: { x: 105, y: 92, rot: -3 },

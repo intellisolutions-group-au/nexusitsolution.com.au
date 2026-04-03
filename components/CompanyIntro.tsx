@@ -6,8 +6,8 @@ import Link from "next/link";
 import Image from "next/image";
 
 const stats = [
-  { icon: Zap, value: "200+", label: "Projects Delivered" },
-  { icon: Users, value: "50+", label: "Expert Developers" },
+  { icon: Zap, value: "150+", label: "Projects Delivered" },
+  { icon: Users, value: "30+", label: "Expert Developers" },
   { icon: Globe, value: "3", label: "Global Offices" },
   { icon: Award, value: "98%", label: "Satisfaction Rate" },
 ];
@@ -70,8 +70,8 @@ export default function CompanyIntro() {
                 transition={{ delay: 0.6, duration: 0.8 }}
                 className="absolute -bottom-8 -right-8 glass-premium p-8 rounded-3xl shadow-2xl max-w-[240px] border border-white"
               >
-                <div className="text-4xl mb-4 bg-primary/10 w-14 h-14 rounded-2xl flex items-center justify-center">
-                  🏆
+                <div className="text-primary mb-4 bg-primary/10 w-14 h-14 rounded-2xl flex items-center justify-center">
+                  <Award size={32} />
                 </div>
                 <div className="text-dark font-black text-xl mb-1 leading-tight">Trusted Technology Partner</div>
                 <div className="text-[10px] uppercase font-bold text-slate-400 tracking-widest mt-2">India · Australia · Dubai</div>
@@ -112,7 +112,7 @@ export default function CompanyIntro() {
               </p>
 
               <ul className="space-y-4">
-                {["Commitment to transparency & innovation", "Expert team across diverse industries", "World-class tech with cost-effective pricing"].map(item => (
+                {["Commitment to transparency & innovation", "Expert team across diverse industries", "World-class tech with cost-effective solutions"].map(item => (
                   <li key={item} className="flex items-center gap-3 text-dark font-bold text-sm">
                     <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center text-primary">
                       <ArrowRight size={12} />

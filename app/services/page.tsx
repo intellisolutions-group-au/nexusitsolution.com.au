@@ -19,7 +19,7 @@ export default function ServicesPage() {
         {/* Text-Free Reference Style Illustration */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/service_hero.png"
+            src="/images/hero/service_hero.png"
             alt="Service Hero Illustration"
             fill
             className="object-cover opacity-60"

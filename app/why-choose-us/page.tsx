@@ -79,7 +79,7 @@ export default function WhyChooseUsPage() {
 
   return (
     <main className="min-h-screen bg-slate-50 overflow-x-hidden">
-      {/* 🚀 Hero Section - Light Glassmorphism */}
+      {/* Hero Section - Light Glassmorphism */}
       <section 
         ref={heroRef}
         className="relative min-h-[85vh] flex items-center pt-32 pb-24 overflow-hidden"
@@ -140,7 +140,7 @@ export default function WhyChooseUsPage() {
         </div>
       </section>
 
-      {/* 💡 Features Section - Soft Glass Cards */}
+      {/* Features Section - Soft Glass Cards */}
       <section className="py-24 md:py-32 relative bg-linear-to-b from-white to-blue-50/50">
         <div className="container-custom relative z-10">
           <div className="text-center mb-20">
@@ -185,7 +185,7 @@ export default function WhyChooseUsPage() {
         </div>
       </section>
 
-      {/* 📊 Stats Section - Clean Gradient Style */}
+      {/* Stats Section - Clean Gradient Style */}
       <section className="py-24 bg-white relative overflow-hidden border-y border-slate-100">
         <div className="absolute inset-0 bg-linear-to-br from-blue-50/20 via-white to-purple-50/20" />
         <div className="container-custom relative z-10">
@@ -210,7 +210,7 @@ export default function WhyChooseUsPage() {
         </div>
       </section>
 
-      {/* 🧠 Workflow Section - Step Cards */}
+      {/* Workflow Section - Step Cards */}
       <section className="py-24 md:py-32 bg-slate-50 relative overflow-hidden">
         <div className="container-custom">
           <div className="text-center mb-20">

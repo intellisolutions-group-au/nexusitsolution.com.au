@@ -5,8 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { ChevronDown, MonitorSmartphone, Code, Cpu, Globe, Layout, Search, Database, Layers, Award } from "lucide-react";
-import styles from "./Navbar.module.css";
+import { ChevronDown, MonitorSmartphone, Code, Cpu, Globe, Layout, Search, Database, Layers, Award, ArrowRight } from "lucide-react";
 
 const serviceCategories = [
   {
@@ -52,7 +51,6 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
-  const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -110,10 +108,8 @@ export default function Navbar() {
     const updatePosition = () => {
       if (!dropdownRef.current) return;
 
-      // Reset first to get natural centered position
       setDropdownXOffset(0);
 
-      // Must wait for next frame to get true rect after reset
       requestAnimationFrame(() => {
         if (!dropdownRef.current) return;
         const rect = dropdownRef.current.getBoundingClientRect();
@@ -138,48 +134,79 @@ export default function Navbar() {
     return () => window.removeEventListener("resize", updatePosition);
   }, [isServicesOpen]);
 
-  const navLinks = [
-    { name: "Home", href: "/" },
-    { name: "About", href: "/about" },
-    { name: "Blog", href: "/blog" },
-    { name: "Why Us", href: "/WhyChooseUs" },
-    { name: "Contact", href: "/contact" },
-  ];
-
   const isServicesActive = pathname.startsWith("/services");
 
   return (
     <>
-      <div className={styles.navWrap}>
-        <nav className={`${styles.navbar} ${isScrolled ? styles.scrolled : ""}`}>
-          <div className={styles.container}>
+      <div className="fixed top-4 left-1/2 -translate-x-1/2 z-[999] w-[calc(100%-32px)] max-w-[1160px]">
+        <nav
+          className={`flex items-center justify-between px-5 sm:px-6 rounded-2xl transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+            isScrolled
+              ? "h-[52px] bg-white/95 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.08)] border border-gray-200/60"
+              : "h-14 bg-[#f8f9fc]/85 backdrop-blur-xl border border-black/5 shadow-[0_4px_28px_rgba(0,0,0,0.04),inset_0_1px_0_rgba(255,255,255,0.9)]"
+          }`}
+        >
+          <div className="contents">
             {/* Logo */}
-            <Link href="/" className={styles.logo} onClick={() => setIsOpen(false)}>
+            <Link href="/" className="flex items-center" onClick={() => setIsOpen(false)}>
               <Image
                 src="/logo/logo.png"
                 alt="NEXUS IT SOLUTION"
                 width={140}
                 height={40}
                 priority
-                className="h-8 w-auto object-contain"
+                className="h-7 sm:h-8 w-auto object-contain"
               />
             </Link>
 
             {/* Desktop Links */}
-            <ul className={styles.navLinks}>
-              <li><Link href="/" className={`${styles.linkItem} ${pathname === "/" ? styles.linkActive : ""}`}>Home</Link></li>
-              <li><Link href="/about" className={`${styles.linkItem} ${pathname === "/about" ? styles.linkActive : ""}`}>About</Link></li>
-              <li><Link href="/blog" className={`${styles.linkItem} ${pathname === "/blog" ? styles.linkActive : ""}`}>Blog</Link></li>
+            <ul className="hidden lg:flex items-center gap-1 list-none m-0 p-0">
+              <li>
+                <Link
+                  href="/"
+                  className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-[13.5px] font-medium transition-colors ${
+                    pathname === "/" ? "text-primary bg-primary/5" : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
+                  }`}
+                >
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/about"
+                  className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-[13.5px] font-medium transition-colors ${
+                    pathname === "/about" ? "text-primary bg-primary/5" : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
+                  }`}
+                >
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/blog"
+                  className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-[13.5px] font-medium transition-colors ${
+                    pathname === "/blog" ? "text-primary bg-primary/5" : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
+                  }`}
+                >
+                  Blog
+                </Link>
+              </li>
 
-              {/* Services Dropdown */}
-              <li
-                className={styles.servicesDropdown}
-                onMouseEnter={() => setIsServicesOpen(true)}
-                onMouseLeave={() => setIsServicesOpen(false)}
-              >
-                <div className={`${styles.linkItem} ${isServicesActive ? styles.linkActive : ""}`}>
-                  Services <span className={styles.chevron}>▾</span>
-                </div>
+              <li className="relative group">
+                <Link
+                  href="/services"
+                  className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-[14px] font-medium transition-colors cursor-pointer ${
+                    isServicesActive ? "text-primary bg-primary/5" : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
+                  }`}
+                  onMouseEnter={() => setIsServicesOpen(true)}
+                  onMouseLeave={() => setIsServicesOpen(false)}
+                >
+                  Services
+                  <ChevronDown
+                    size={14}
+                    className={`opacity-60 transition-transform duration-200 ${isServicesOpen ? "rotate-180" : ""}`}
+                  />
+                </Link>
 
                 <AnimatePresence>
                   {isServicesOpen && (
@@ -188,71 +215,110 @@ export default function Navbar() {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 10 }}
-                      transition={{ duration: 0.2 }}
-                      className={styles.dropdownPanel}
-                      style={{
-                        "--dropdown-offset": `${dropdownXOffset}px`
-                      } as any}
+                      transition={{ duration: 0.2, ease: "easeOut" }}
+                      className="absolute top-[calc(100%+8px)] left-1/2 -translate-x-1/2 bg-white border border-gray-100 rounded-2xl p-6 w-[800px] grid grid-cols-3 gap-8 shadow-[0_40px_100px_rgba(0,0,0,0.08),0_0_0_1px_rgba(0,0,0,0.03)] z-[1000]"
+                      onMouseEnter={() => setIsServicesOpen(true)}
+                      onMouseLeave={() => setIsServicesOpen(false)}
                     >
-                      {serviceCategories.map((category, idx) => {
-                        const IconComponent = category.icon;
-                        return (
-                          <div key={idx} className={styles.dropdownColumn} id={`dropdown-col-${idx}`}>
-                            <h5>
-                              <IconComponent size={14} className="inline-block mr-2 mb-0.5" />
-                              {category.title}
-                            </h5>
-                            {category.services.map((svc, sIdx) => (
-                              <Link key={sIdx} href={svc.href} className={styles.dropdownItem}>
-                                {svc.name}
-                              </Link>
-                            ))}
-                          </div>
-                        );
-                      })}
+                      {/* Left Column - Featured or Overview */}
+                      <div className="col-span-1 bg-gray-50/50 rounded-xl p-5 border border-gray-100/50 flex flex-col justify-between">
+                         <div>
+                            <h3 className="text-[16px] font-bold text-gray-900 mb-2">Our Solutions</h3>
+                            <p className="text-[13px] text-gray-500 leading-relaxed mb-4">
+                              Enterprise-grade software and mobile development tailored for modern businesses.
+                            </p>
+                         </div>
+                         <Link href="/services" className="inline-flex items-center gap-2 text-[13px] font-bold text-primary hover:text-gray-900 transition-colors group/link">
+                            View All Services
+                            <ArrowRight size={14} className="group-hover/link:translate-x-1 transition-transform" />
+                         </Link>
+                      </div>
+
+                      {/* Right Columns - Categories */}
+                      <div className="col-span-2 grid grid-cols-2 gap-6">
+                        {serviceCategories.slice(0, 4).map((category, idx) => {
+                          const IconComponent = category.icon;
+                          return (
+                            <div key={idx}>
+                              <h5 className="font-sans text-[12px] font-bold tracking-[1px] uppercase text-gray-900 mb-4 flex items-center">
+                                <span className="w-6 h-6 rounded-md bg-primary/10 text-primary flex items-center justify-center mr-2">
+                                  <IconComponent size={12} />
+                                </span>
+                                {category.title}
+                              </h5>
+                              <div className="flex flex-col gap-2.5">
+                                {category.services.map((svc, sIdx) => (
+                                  <Link
+                                    key={sIdx}
+                                    href={svc.href}
+                                    className="group/item relative block text-[13.5px] font-medium text-gray-500 hover:text-primary transition-colors flex items-center gap-2"
+                                  >
+                                    <span className="w-1.5 h-1.5 rounded-full bg-gray-200 group-hover/item:bg-primary transition-colors" />
+                                    {svc.name}
+                                  </Link>
+                                ))}
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
                     </motion.div>
                   )}
                 </AnimatePresence>
               </li>
 
-              <li><Link href="/why-choose-us" className={`${styles.linkItem} ${pathname === "/why-choose-us" ? styles.linkActive : ""}`}>Why Us</Link></li>
+              <li>
+                <Link
+                  href="/why-choose-us"
+                  className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-[13.5px] font-medium transition-colors ${
+                    pathname === "/why-choose-us" ? "text-primary bg-primary/5" : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
+                  }`}
+                >
+                  Why Us
+                </Link>
+              </li>
             </ul>
 
-            <Link href="/contact" className={styles.ctaBtn}>
+            <Link
+              href="/contact"
+              className="hidden lg:inline-flex bg-gray-900 text-white px-5 py-2 rounded-xl text-[13px] font-semibold transition-all duration-300 shadow-[0_4px_14px_rgba(0,0,0,0.1)] hover:bg-primary hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(124,58,237,0.3)]"
+            >
               Contact Us
             </Link>
 
             {/* Mobile Toggle */}
-            <div
-              className={`${styles.menuToggle} ${isOpen ? styles.active : ""}`}
+            <button
+              className="lg:hidden flex flex-col justify-center items-center w-8 h-8 gap-1.5 z-[1002]"
               onClick={() => setIsOpen(!isOpen)}
+              aria-label="Toggle menu"
             >
-              <div className={styles.bar}></div>
-              <div className={styles.bar}></div>
-              <div className={styles.bar}></div>
-            </div>
+              <div className={`w-5 h-[2px] bg-gray-900 rounded-full transition-transform duration-300 ${isOpen ? "translate-y-[8px] rotate-45" : ""}`} />
+              <div className={`w-5 h-[2px] bg-gray-900 rounded-full transition-opacity duration-300 ${isOpen ? "opacity-0" : ""}`} />
+              <div className={`w-5 h-[2px] bg-gray-900 rounded-full transition-transform duration-300 ${isOpen ? "-translate-y-[8px] -rotate-45" : ""}`} />
+            </button>
           </div>
 
           {/* Mobile Menu Panel */}
           <AnimatePresence>
             {isOpen && (
               <motion.div
-                initial={{ opacity: 0, y: -20 }}
+                initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                className={styles.mobileOverlay}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.2 }}
+                className="fixed inset-[-16px] bg-[#f8f9fc] z-[1001] p-8 pt-24 flex flex-col gap-6 overflow-y-auto h-[100vh]"
               >
-                <Link href="/" className={styles.mobileLink} onClick={() => setIsOpen(false)}>Home</Link>
-                <Link href="/about" className={styles.mobileLink} onClick={() => setIsOpen(false)}>About</Link>
-                <Link href="/blog" className={styles.mobileLink} onClick={() => setIsOpen(false)}>Blog</Link>
-                <div className="flex flex-col gap-2">
-                  <span className="font-mono text-[10px] tracking-widest uppercase text-primary">Services</span>
-                  <div className={styles.mobileServicesList}>
+                <Link href="/" className="text-[28px] font-extrabold text-gray-900" onClick={() => setIsOpen(false)}>Home</Link>
+                <Link href="/about" className="text-[28px] font-extrabold text-gray-900" onClick={() => setIsOpen(false)}>About</Link>
+                <Link href="/blog" className="text-[28px] font-extrabold text-gray-900" onClick={() => setIsOpen(false)}>Blog</Link>
+                <div className="flex flex-col gap-4">
+                  <span className="font-mono text-[11px] tracking-[0.2em] font-bold uppercase text-primary">Services</span>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {serviceCategories.flatMap(cat => cat.services).map((svc, sIdx) => (
                       <Link
                         key={sIdx}
                         href={svc.href}
-                        className={styles.mobileServiceItem}
+                        className="text-[14px] font-medium text-gray-600 p-3 bg-white rounded-xl border border-gray-100 shadow-sm"
                         onClick={() => setIsOpen(false)}
                       >
                         {svc.name}
@@ -260,8 +326,14 @@ export default function Navbar() {
                     ))}
                   </div>
                 </div>
-                <Link href="/why-choose-us" className={styles.mobileLink} onClick={() => setIsOpen(false)}>Why Us</Link>
-                <Link href="/contact" className="mt-4 px-8 py-4 bg-primary text-white rounded-2xl font-bold text-center" onClick={() => setIsOpen(false)}>Free Consultant</Link>
+                <Link href="/why-choose-us" className="text-[28px] font-extrabold text-gray-900" onClick={() => setIsOpen(false)}>Why Us</Link>
+                <Link
+                  href="/contact"
+                  className="mt-4 px-6 py-4 bg-primary text-white rounded-xl font-bold text-center shadow-lg shadow-primary/20"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Free Consultation
+                </Link>
               </motion.div>
             )}
           </AnimatePresence>

@@ -121,7 +121,7 @@ export default function ClientFocusSection() {
                 className="w-full h-[300px] object-cover"
               />
               <div className="absolute top-6 left-6 px-4 py-2 bg-white/90 backdrop-blur-md rounded-xl shadow-lg flex items-center gap-2 border border-white/50">
-                <span className="text-lg">🏢</span>
+                <Building2 size={18} className="text-slate-800" />
                 <span className="font-bold text-slate-800 text-sm">Enterprise Ready</span>
               </div>
               <div className="absolute inset-0 bg-linear-to-t from-slate-900/40 to-transparent group-hover:from-slate-900/20 transition-all duration-500" />
@@ -135,7 +135,7 @@ export default function ClientFocusSection() {
                 className="w-full h-[300px] object-cover"
               />
               <div className="absolute bottom-6 right-6 px-4 py-2 bg-white/90 backdrop-blur-md rounded-xl shadow-lg flex items-center gap-2 border border-white/50">
-                <span className="text-lg">🚀</span>
+                <Rocket size={18} className="text-slate-800" />
                 <span className="font-bold text-slate-800 text-sm">Startup Focused</span>
               </div>
               <div className="absolute inset-0 bg-linear-to-b from-slate-900/40 to-transparent group-hover:from-slate-900/20 transition-all duration-500" />

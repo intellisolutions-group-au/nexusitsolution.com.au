@@ -8,7 +8,7 @@ const testimonials = [
     review:
       "Their mobile app team is exceptional. We saw a 40% increase in user engagement after launching our new app!",
     client: "Michael Chang",
-    role: "Product Director, HealthSync",
+    role: "Product Director",
     icon: <FaMobileAlt className={styles.cardIcon} />,
     avatar: "M",
   },
@@ -17,7 +17,7 @@ const testimonials = [
     review:
       "Nexus migrated our infrastructure to the cloud seamlessly. The performance and security improvements are outstanding.",
     client: "Sarah Jenkins",
-    role: "CTO, FinTech Global",
+    role: "CTO",
     icon: <FaCloud className={styles.cardIcon} />,
     avatar: "S",
   },
@@ -26,7 +26,7 @@ const testimonials = [
     review:
       "We trust Nexus with our digital security. Their proactive approach keeps our data and clients safe at all times.",
     client: "David Ross",
-    role: "VP Operations, Stellar Logistics",
+    role: "VP Operations",
     icon: <FaLock className={styles.cardIcon} />,
     avatar: "D",
   },
@@ -35,7 +35,7 @@ const testimonials = [
     review:
       "Their AI solutions streamlined our workflow and saved us hundreds of hours. Truly futuristic and reliable.",
     client: "Priya Mehra",
-    role: "Head of Digital, InnovateX",
+    role: "Head of Digital",
     icon: <FaRobot className={styles.cardIcon} />,
     avatar: "P",
   },
@@ -44,7 +44,7 @@ const testimonials = [
     review:
       "The analytics dashboards from Nexus give us real-time insights. Our decision-making is now data-driven and fast!",
     client: "Lucas Brown",
-    role: "CEO, MarketPulse",
+    role: "CEO",
     icon: <FaChartBar className={styles.cardIcon} />,
     avatar: "L",
   },

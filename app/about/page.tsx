@@ -34,7 +34,7 @@ export default function AboutPage() {
         {/* Layer 1: Background Image */}
         <div className="absolute inset-0 z-0 w-full h-full">
           <Image
-            src="/hero-about.png"
+            src="/images/hero/hero-about.png"
             alt="Technology Network"
             fill
             className="object-cover opacity-60"

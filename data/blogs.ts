@@ -1,5 +1,3 @@
-"use client";
-
 export interface BlogPost {
   id: string;
   title: string;
@@ -296,7 +294,7 @@ export const blogs: BlogPost[] = [
     author: "Nexus Team",
     image: "/images/services/ai_ml_development_card.png",
     description: "Understanding the necessity of fairness, transparency, and accountability in AI systems.",
-    content: `## Introduction\nAs AI becomes more integrated into business operations, ethics must be at the forefront. AI ethics is about ensuring that systems are fair, transparent, and accountable.\n\n## Core Ethical Pillars\n- **Fairness:** Preventing bias in data and algorithms.\n- **Transparency:** Making AI decision-making processes understandable.\n- **Accountability:** Clearly defining who is responsible for AI outcomes.\n- **Privacy:** Protecting the data used to train and run AI models.\n\n## Why It Matters\n- **Trust:** Customers are more likely to use services they trust.\n- **Compliance:** Avoiding legal and regulatory pitfalls.\n- **Social Impact:** Preventing harmful societal consequences.\n\n## Conclusion\nEthical AI is not an optional extra; it's a fundamental requirement for the responsible use of technology in the modern world.`,
+    content: `## Introduction\nAs AI becomes more integrated into business operations, ethics must be at the forefront. AI ethics is about ensuring that systems are fair, transparent, and accountable.\n\n## Core Ethical Pillars\n- **Fairness:** Preventing bias in data and algorithms.\n- **Transparency:** Making AI decision-making processes understandable.\n- **Accountability:** Clearly defining who is responsible for AI outcomes.\n- **Privacy:** Protecting the data used to train and run AI models.\n\n## Why It Matters\n- **Trust:** Customers are more likely to use services they trust.\n- **Social Impact:** Preventing harmful societal consequences.\n\n## Conclusion\nEthical AI is not an optional extra; it's a fundamental requirement for the responsible use of technology in the modern world.`,
     estimatedReadTime: "7 min",
   },
   {

@@ -42,7 +42,7 @@ export default function ServiceCardFlip({
       onMouseLeave={() => setIsHovered(false)}
     >
       <Link href={`/services/${slug}`} className="block h-full">
-        <div className={`h-full min-h-[500px] flex flex-col overflow-hidden transition-all duration-500 glass-card-premium ${isHovered ? '-translate-y-2' : ''}`}>
+        <div className={`h-full flex flex-col overflow-hidden transition-all duration-500 glass-card-premium ${isHovered ? '-translate-y-2' : ''}`}>
           {/* Top Illustration/Image */}
           <div className="relative w-full h-48 overflow-hidden">
             <Image 

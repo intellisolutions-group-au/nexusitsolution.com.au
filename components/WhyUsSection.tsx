@@ -8,7 +8,7 @@ const whyUsPoints = [
   {
     icon: Zap,
     title: "Flexible Architecture",
-    description: "Standardised coding and optimised techniques for fast, reliable, maintainable products.",
+    description: "Consistent coding and optimised techniques for fast, reliable, maintainable products.",
   },
   {
     icon: Globe,

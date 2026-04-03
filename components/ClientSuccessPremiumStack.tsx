@@ -9,7 +9,7 @@ const testimonials = [
     tag: "AI & Automation",
     quote: "Their AI solutions streamlined our workflow and saved us hundreds of hours. Truly futuristic and reliable.",
     name: "Priya Mehra",
-    role: "Head of Digital, InnovateX",
+    role: "Head of Digital",
     avatarColor: "#6366F1",
     initial: "P",
     rot: 0
@@ -18,7 +18,7 @@ const testimonials = [
     tag: "DevOps",
     quote: "Our deployment time went from 3 days to 20 minutes. The CI/CD pipeline they built is world-class.",
     name: "Mohammed Al-Rashid",
-    role: "Lead Developer, FastShip",
+    role: "Lead Developer",
     avatarColor: "#F59E0B",
     initial: "M",
     rot: 1.2
@@ -27,7 +27,7 @@ const testimonials = [
     tag: "Cybersecurity",
     quote: "After partnering with Nexus, our security incidents dropped to zero. Their SOC team is exceptional.",
     name: "Anita Verma",
-    role: "VP Engineering, SecureBank",
+    role: "VP Engineering",
     avatarColor: "#10B981",
     initial: "A",
     rot: -1.5
@@ -36,7 +36,7 @@ const testimonials = [
     tag: "Cloud Migration",
     quote: "Nexus moved our entire infrastructure to the cloud in under 6 weeks — zero downtime, zero stress.",
     name: "Rahul Singh",
-    role: "CTO, ScaleUp Labs",
+    role: "CTO",
     avatarColor: "#0EA5E9",
     initial: "R",
     rot: 2
@@ -45,7 +45,7 @@ const testimonials = [
     tag: "Web Development",
     quote: "The website Nexus built for us is not only stunning but converted 2x better than our old one from day one.",
     name: "James Wilson",
-    role: "Creative Director, BrandFlow",
+    role: "Creative Director",
     avatarColor: "#EC4899",
     initial: "J",
     rot: -2.1
@@ -54,7 +54,7 @@ const testimonials = [
     tag: "Custom Software",
     quote: "The ERP system they developed from scratch perfectly mirrors our complex manufacturing process. Unbeatable.",
     name: "Elena Petrova",
-    role: "COO, FactoryPrime",
+    role: "COO",
     avatarColor: "#8B5CF6",
     initial: "E",
     rot: 1.8
@@ -63,7 +63,7 @@ const testimonials = [
     tag: "Digital Marketing",
     quote: "Our organic traffic skyrocketed by 300% in six months thanks to Nexus's SEO and content strategy.",
     name: "David Chen",
-    role: "Marketing Head, GrowthNode",
+    role: "Marketing Head",
     avatarColor: "#06B6D4",
     initial: "D",
     rot: -1.2
@@ -72,7 +72,7 @@ const testimonials = [
     tag: "Data Analytics",
     quote: "The dashboards built by Nexus revealed cost-saving opportunities we had missed for years. Transformative data.",
     name: "Sarah Miller",
-    role: "Lead Analyst, DataSphere",
+    role: "Lead Analyst",
     avatarColor: "#F43F5E",
     initial: "S",
     rot: 2.5

@@ -1,0 +1,75 @@
+{
+  "domain": "nexusitsolution.com.au",
+  "industry": "Information Technology Services & Web Development",
+  "domainRegistered": "2026-01-19",
+  "domainAge": "Newly Registered",
+  "domainExpiry": "2027-01-19",
+  "registrar": "Auto-detected (AU registry)",
+  "brandName": "Nexus IT Solution",
+  "primaryContact": "info@nexusitsolution.com.au",
+  "keyServices": [
+    "Custom Web Development",
+    "Digital Solutions",
+    "Cloud Infrastructure",
+    "Managed IT Services",
+    "Cyber Security & Networking"
+  ],
+  "brandColors": [
+    "#0f172a",
+    "#3b82f6",
+    "#f8fafc",
+    "#ffffff"
+  ],
+  "establishedYear": "2026",
+  "businessType": "B2B / Technology Services Agency",
+  "targetAudience": "SMEs, Corporate, Enterprises in Australia",
+  "targetCountries": [
+    "AU"
+  ],
+  "seoKeywords": [
+    "IT Services Australia",
+    "Web Development Agency AU",
+    "Cloud Solutions",
+    "Managed IT Services",
+    "Cyber Security Services",
+    "Nexus IT Solution"
+  ],
+  "competitorUrls": [
+    "example.com.au",
+    "auto-discovered-competitor.com.au"
+  ],
+  "designStyle": "Modern, Corporate, High-Tech, Professional, Clean",
+  "allocatedTo": "Development Team",
+  "companySize": "Medium",
+  "logoPath": "/assets/branding/logo.svg",
+  "contactDetails": {
+    "phone": "+61 000 000 000",
+    "whatsapp": "+61 000 000 000",
+    "officeAddress": {
+      "street": "Unit 12/8 Hampstead Rd",
+      "city": "Homebush West",
+      "state": "NSW",
+      "country": "Australia",
+      "zipCode": "2140"
+    }
+  },
+  "socialMediaHandles": {
+    "linkedin": "@nexus-it-solution",
+    "twitter": "@NexusIT",
+    "facebook": "@NexusITSolutionAU"
+  },
+  "additionalFeatures": {
+    "newsletter": true,
+    "testimonials": true,
+    "faq": true,
+    "blog": true,
+    "portfolio": true,
+    "teamPage": true,
+    "chatWidget": false,
+    "multiLanguage": false
+  },
+  "analytics": {
+    "googleAnalytics": "G-XXXXXXXXXX",
+    "googleTagManager": "GTM-XXXXXXX"
+  }
+}

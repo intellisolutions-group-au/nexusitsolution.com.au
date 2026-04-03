@@ -7,35 +7,35 @@ const testimonials = [
     review:
       "Their mobile app team is exceptional. We saw a 40% increase in user engagement after launching our new app!",
     client: "Michael Chang",
-    role: "Product Director, HealthSync",
+    role: "Product Director",
   },
   {
     service: "Cloud Solutions",
     review:
       "Nexus migrated our infrastructure to the cloud seamlessly. The performance and security improvements are outstanding.",
     client: "Sarah Jenkins",
-    role: "CTO, FinTech Global",
+    role: "CTO",
   },
   {
     service: "Cybersecurity",
     review:
       "We trust Nexus with our digital security. Their proactive approach keeps our data and clients safe at all times.",
     client: "David Ross",
-    role: "VP Operations, Stellar Logistics",
+    role: "VP Operations",
   },
   {
     service: "AI & Automation",
     review:
       "Their AI solutions streamlined our workflow and saved us hundreds of hours. Truly futuristic and reliable.",
     client: "Priya Mehra",
-    role: "Head of Digital, InnovateX",
+    role: "Head of Digital",
   },
   {
     service: "Data Analytics",
     review:
       "The analytics dashboards from Nexus give us real-time insights. Our decision-making is now data-driven and fast!",
     client: "Lucas Brown",
-    role: "CEO, MarketPulse",
+    role: "CEO",
   },
 ];
 

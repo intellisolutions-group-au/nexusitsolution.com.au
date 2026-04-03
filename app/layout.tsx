@@ -20,8 +20,18 @@ const dmMono = DM_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Nexus IT Solutions | Futuristic Web & App Development",
-  description: "Global IT corporate website offering innovative web, mobile, and custom software solutions.",
+  title: "Nexus IT Solution | Leading IT Services & Web Development in Australia",
+  description: "Australia's premier B2B technology partner. We specialize in custom web development, cloud infrastructure, managed IT services, and cyber security for SMEs.",
+  keywords: ["IT Services Australia", "Web Development Agency AU", "Cloud Solutions", "Managed IT Services", "Nexus IT Solution"],
+  authors: [{ name: "Nexus IT Solution Team" }],
+  openGraph: {
+    title: "Nexus IT Solution | Leading IT Services in Australia",
+    description: "Your partner for custom web development, cloud infrastructure, and managed IT services.",
+    url: "https://nexusitsolution.com.au",
+    siteName: "Nexus IT Solution",
+    locale: "en_AU",
+    type: "website",
+  },
   icons: {
     icon: "/favicon/favicon.ico",
     shortcut: "/favicon/favicon.ico",
